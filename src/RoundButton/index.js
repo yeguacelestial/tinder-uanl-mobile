@@ -4,7 +4,7 @@ import { Animated, TouchableWithoutFeedback } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { styles } from './styles';
 
-export default function RoundButton({ name, size, color }) {
+export default function RoundButton({ name, size, color, onPress }) {
   const scale = React.useRef(new Animated.Value(1)).current;
 
   const animateScale = React.useCallback(
@@ -22,7 +22,10 @@ export default function RoundButton({ name, size, color }) {
     <TouchableWithoutFeedback
       onPressIn={() => animateScale(0.8)}
       delayPressIn={0}
-      onPressOut={() => animateScale(1)}
+      onPressOut={() => {
+        animateScale(1);
+        onPress();
+      }}
       delayPressOut={110}
     >
       <Animated.View style={[styles.container, { transform: [{ scale }] }]}>

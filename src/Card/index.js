@@ -60,7 +60,7 @@ export default function Card({
         </Animated.View>
       </>
     );
-  }, []);
+  }, [likeOpacity, nopeOpacity]);
 
   return (
     <Animated.View
