@@ -7,3 +7,8 @@ export const CARD = {
   HEIGHT: height * 0.75,
   BORDER_RADIUS: 20,
 };
+
+export const COLORS = {
+  like: '#00eda6',
+  nope: '#ff006f',
+};

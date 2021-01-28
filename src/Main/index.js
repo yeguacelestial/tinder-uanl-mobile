@@ -6,6 +6,7 @@ import { pets as petsArray } from './data';
 import Card from '../Card';
 
 import { styles } from './styles';
+import Footer from '../Footer';
 
 export default function Main() {
   const [pets, setPets] = React.useState(petsArray);
@@ -20,6 +21,8 @@ export default function Main() {
           );
         })
         .reverse()}
+
+      <Footer />
     </View>
   );
 }
