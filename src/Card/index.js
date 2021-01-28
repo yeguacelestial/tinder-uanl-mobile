@@ -7,29 +7,60 @@ import { styles } from './styles';
 import Choice from '../Choice';
 import { ACTION_OFFSET } from '../utils/constants';
 
-export default function Card({ name, source, isFirst, swipe, ...rest }) {
-  const renderChoice = React.useCallback(() => {
-    return (
-      <>
-        <View style={[styles.choiceContainer, styles.likeContainer]}>
-          <Choice type="like" />
-        </View>
-
-        <View style={[styles.choiceContainer, styles.nopeContainer]}>
-          <Choice type="nope" />
-        </View>
-      </>
-    );
-  }, []);
-
-  const rotate = swipe.x.interpolate({
+export default function Card({
+  name,
+  source,
+  isFirst,
+  swipe,
+  tiltSign,
+  ...rest
+}) {
+  const rotate = Animated.multiply(swipe.x, tiltSign).interpolate({
     inputRange: [-ACTION_OFFSET, 0, ACTION_OFFSET],
     outputRange: ['8deg', '0deg', '-8deg'],
+  });
+
+  const likeOpacity = swipe.x.interpolate({
+    inputRange: [25, ACTION_OFFSET],
+    outputRange: [0, 1],
+    extrapolate: 'clamp',
+  });
+
+  const nopeOpacity = swipe.x.interpolate({
+    inputRange: [-ACTION_OFFSET, -25],
+    outputRange: [1, 0],
+    extrapolate: 'clamp',
   });
 
   const animatedCardStyle = {
     transform: [...swipe.getTranslateTransform(), { rotate }],
   };
+
+  const renderChoice = React.useCallback(() => {
+    return (
+      <>
+        <Animated.View
+          style={[
+            styles.choiceContainer,
+            styles.likeContainer,
+            { opacity: likeOpacity },
+          ]}
+        >
+          <Choice type="like" />
+        </Animated.View>
+
+        <Animated.View
+          style={[
+            styles.choiceContainer,
+            styles.nopeContainer,
+            { opacity: nopeOpacity },
+          ]}
+        >
+          <Choice type="nope" />
+        </Animated.View>
+      </>
+    );
+  }, []);
 
   return (
     <Animated.View

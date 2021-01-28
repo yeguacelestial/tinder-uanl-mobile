@@ -7,15 +7,19 @@ import Card from '../Card';
 
 import { styles } from './styles';
 import Footer from '../Footer';
+import { CARD } from '../utils/constants';
 
 export default function Main() {
   const [pets, setPets] = React.useState(petsArray);
   const swipe = React.useRef(new Animated.ValueXY()).current;
+  const tiltSign = React.useRef(new Animated.Value(1)).current;
 
   const panResponder = PanResponder.create({
     onMoveShouldSetPanResponder: () => true,
-    onPanResponderMove: (_, { dx, dy }) => {
+    onPanResponderMove: (_, { dx, dy, y0, x0 }) => {
       swipe.setValue({ x: dx, y: dy });
+      // console.log(x0 > CARD.WIDTH / 2 ? 'NOPE' : 'LIKE');
+      tiltSign.setValue(y0 > CARD.HEIGHT / 2 ? 1 : -1);
     },
     onPanResponderRelease: (_, gesture) => {
       Animated.spring(swipe, {
@@ -43,6 +47,7 @@ export default function Main() {
               source={source}
               isFirst={isFirst}
               swipe={swipe}
+              tiltSign={tiltSign}
               {...dragHandlers}
             />
           );
