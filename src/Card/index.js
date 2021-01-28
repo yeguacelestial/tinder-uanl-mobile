@@ -1,12 +1,12 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Animated } from 'react-native';
 
 import { styles } from './styles';
 
 import Choice from '../Choice';
 
-export default function Card({ name, source, isFirst }) {
+export default function Card({ name, source, isFirst, swipe, ...rest }) {
   const renderChoice = React.useCallback(() => {
     return (
       <>
@@ -21,8 +21,15 @@ export default function Card({ name, source, isFirst }) {
     );
   }, []);
 
+  const animatedCardStyle = {
+    transform: [...swipe.getTranslateTransform()],
+  };
+
   return (
-    <View style={styles.container}>
+    <Animated.View
+      style={[styles.container, isFirst && animatedCardStyle]}
+      {...rest}
+    >
       <Image source={source} style={styles.image} />
       <LinearGradient
         colors={['transparent', 'rgba(0,0,0,0.9)']}
@@ -31,6 +38,6 @@ export default function Card({ name, source, isFirst }) {
       <Text style={styles.name}>{name}</Text>
 
       {isFirst && renderChoice()}
-    </View>
+    </Animated.View>
   );
 }
