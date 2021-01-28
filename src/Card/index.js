@@ -5,6 +5,7 @@ import { View, Text, Image, Animated } from 'react-native';
 import { styles } from './styles';
 
 import Choice from '../Choice';
+import { ACTION_OFFSET } from '../utils/constants';
 
 export default function Card({ name, source, isFirst, swipe, ...rest }) {
   const renderChoice = React.useCallback(() => {
@@ -21,8 +22,13 @@ export default function Card({ name, source, isFirst, swipe, ...rest }) {
     );
   }, []);
 
+  const rotate = swipe.x.interpolate({
+    inputRange: [-ACTION_OFFSET, 0, ACTION_OFFSET],
+    outputRange: ['8deg', '0deg', '-8deg'],
+  });
+
   const animatedCardStyle = {
-    transform: [...swipe.getTranslateTransform()],
+    transform: [...swipe.getTranslateTransform(), { rotate }],
   };
 
   return (
