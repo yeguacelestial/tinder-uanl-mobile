@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Main from '../../Main';
-import Home from '../screens/Home';
 import Discussion from '../screens/Discussion';
 import Profile from '../screens/Profile';
 import Chat from '../screens/Chat';

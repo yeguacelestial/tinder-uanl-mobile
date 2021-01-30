@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Keyboard } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -15,6 +15,9 @@ import { styles } from './styles';
 const Discussion = ({ route, navigation }) => {
   const { itemName, itemPic } = route.params;
   const [inputMessage, setMessage] = React.useState('');
+
+  // For scrolling to the bottom of the chat
+  const scrollViewRef = React.useRef();
 
   const send = () => {
     Data.push({ id: inputMessage, message: inputMessage });
@@ -41,7 +44,27 @@ const Discussion = ({ route, navigation }) => {
           <Image source={{ uri: itemPic }} style={styles.avatar} />
         </View>
 
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          ref={scrollViewRef}
+          onContentSizeChange={() =>
+            scrollViewRef.current.scrollToEnd({ animated: true })
+          }
+        >
+          {/* When Keyboard shows, go to the end of the chat */}
+          {React.useEffect(() => {
+            const keyboardDidShowListener = Keyboard.addListener(
+              'keyboardDidShow',
+              () => {
+                scrollViewRef.current.scrollToEnd({ animated: true });
+              },
+            );
+
+            return () => {
+              keyboardDidShowListener.remove();
+            };
+          }, [])}
+
           <LastWatch checkedOn="Yesterday" />
           <Received image={itemPic} message={Data[0].message} />
 
@@ -58,6 +81,7 @@ const Discussion = ({ route, navigation }) => {
           <View>{txt}</View>
         </ScrollView>
       </View>
+
       <Input
         inputMessage={inputMessage}
         setMessage={(inputMessage) => setMessage(inputMessage)}
