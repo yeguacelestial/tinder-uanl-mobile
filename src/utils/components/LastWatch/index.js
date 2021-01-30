@@ -3,10 +3,10 @@ import { View, Text } from 'react-native';
 
 import { styles } from './styles';
 
-const LastWatch = () => {
+const LastWatch = ({ checkedOn }) => {
   return (
     <View style={styles.container}>
-      <Text>LastWatch Component</Text>
+      <Text style={styles.text}>{checkedOn}</Text>
     </View>
   );
 };

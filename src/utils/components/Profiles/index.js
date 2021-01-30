@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
 import { styles } from './styles';
 
-const Profiles = () => {
+const Profiles = ({ username, uri }) => {
   return (
     <View style={styles.container}>
-      <Text>Profiles Component</Text>
+      <Image source={{ uri: uri }} style={styles.avatarStyle} />
+      <Text style={styles.nameStyle}>{username}</Text>
     </View>
   );
 };

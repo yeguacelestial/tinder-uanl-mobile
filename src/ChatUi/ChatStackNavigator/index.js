@@ -2,6 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import Main from '../../Main';
 import Home from '../screens/Home';
 import Discussion from '../screens/Discussion';
 import Profile from '../screens/Profile';
@@ -23,7 +24,7 @@ const BottomTabNavigator = () => {
     >
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={Main}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({ color, size }) => (
@@ -38,7 +39,7 @@ const BottomTabNavigator = () => {
         options={{
           tabBarLabel: '',
           tabBarIcon: ({ color, size }) => (
-            <Icon name="chat" color={color} size={30} />
+            <Icon2 name="chat" color={color} size={30} />
           ),
         }}
       />

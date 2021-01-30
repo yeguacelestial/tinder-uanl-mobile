@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin varius eros eu nulla imperdiet ultricies."
+  },
+  {
+    "id": 2,
+    "message": "Nulla sollicitudin vel dolor blandit feugiat. Ut at magna facilisis, elementum quam eu, aliquet tellus. Etiam condimentum ornare magna eu sagittis. "
+  },
+  {
+    "id": 3,
+    "message": "Maecenas lorem dui, venenatis eu neque at, blandit venenatis odio. Fusce in suscipit lectus."
+  },
+  {
+    "id": 4,
+    "message": "tiam quis ex elementum, tincidunt augue nec, consectetur purus."
+  },
+  {
+    "id": 5,
+    "message": "Morbi a nibh iaculis massa feugiat placerat. "
+  }
+]
