@@ -1,5 +1,5 @@
 # tinder-uanl-mobile
-Make swipes great again.
+Alentando la flama de la verdad...y del amor.
 
 ## Roadmap
 - [ ] Mobile app MVP
