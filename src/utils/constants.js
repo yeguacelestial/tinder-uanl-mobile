@@ -6,7 +6,7 @@ export const CARD = {
   WIDTH: width * 0.9,
   HEIGHT: height * 0.65,
   BORDER_RADIUS: 20,
-  OUT_OF_SCREEN: width * 0.5 * width,
+  OUT_OF_SCREEN: width * 1.5,
 };
 
 export const COLORS = {

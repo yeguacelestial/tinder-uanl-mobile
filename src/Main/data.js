@@ -19,4 +19,8 @@ export const pets = [
     name: 'Serious Dog',
     source: require('../../assets/pet5.jpeg'),
   },
+  {
+    name: 'Laika',
+    source: require('../../assets/laika.jpg'),
+  },
 ];

@@ -62,7 +62,7 @@ export default function Main() {
     (direction) => {
       Animated.timing(swipe.x, {
         toValue: direction * CARD.OUT_OF_SCREEN,
-        duration: 10000,
+        duration: 700,
         useNativeDriver: true,
       }).start(removeTopCard);
     },
