@@ -1,5 +1,12 @@
 import React from 'react';
-import { Text, View, StatusBar, Image } from 'react-native';
+import {
+  Text,
+  View,
+  StatusBar,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 
 import Swiper from 'react-native-swiper';
 
@@ -32,6 +39,30 @@ export default function Onboarding() {
           />
         </View>
       </Swiper>
+
+      <View style={styles.textContainer}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>YOUR MUSIC.</Text>
+        </View>
+
+        <View style={styles.subTitleContainer}>
+          <Text style={styles.subtitle}>Tuned to you.</Text>
+        </View>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => Alert.alert('You pressed Sign Up')}>
+          <View style={styles.signupContainer}>
+            <Text style={styles.signup}>Sign Up</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => Alert.alert('You pressed Sign In')}>
+          <View style={styles.loginContainer}>
+            <Text style={styles.login}>Log In</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
