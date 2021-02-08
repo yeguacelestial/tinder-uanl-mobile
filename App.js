@@ -3,11 +3,13 @@ import React from 'react';
 
 import ChatUi from './src/ChatUi';
 import Onboarding from './src/Onboarding';
+import AzureAuth from './src/AzureAuth';
 
 export default function App() {
   return (
     <>
-      <Onboarding />
+      {<AzureAuth />}
+      {/* <Onboarding /> */}
       {/* <ChatUi /> */}
       <StatusBar style="auto" />
     </>
