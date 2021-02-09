@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
     color: '#FFF',
   },
   subTitleContainer: {
-    width: 200,
+    width: 250,
     height: 50,
     opacity: 0.8,
     backgroundColor: '#3B55E6',
@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
   },
   subtitle: {
     // fontFamily: 'Helvetica',
-    fontSize: 24,
+    fontSize: 18,
     color: '#FFF',
   },
   buttonContainer: {
@@ -59,18 +59,15 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   signupContainer: {
-    width: 180,
-    height: 60,
-    backgroundColor: '#fff',
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
   signup: {
-    // fontFamily: 'Helvetica',
     fontWeight: 'bold',
-    fontSize: 20,
-    color: '#3B55E6',
+    fontSize: 16,
+    marginLeft: 10,
+    // color: '#3B55E6',
   },
   loginContainer: {
     width: 180,

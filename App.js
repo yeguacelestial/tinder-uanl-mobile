@@ -8,8 +8,8 @@ import AzureAuth from './src/AzureAuth';
 export default function App() {
   return (
     <>
-      {<AzureAuth />}
-      {/* <Onboarding /> */}
+      {/* {<AzureAuth />} */}
+      <Onboarding />
       {/* <ChatUi /> */}
       <StatusBar style="auto" />
     </>

@@ -10,11 +10,36 @@ export default function AzureAuth() {
     result: null,
   });
 
+  async function postReceivedToken(token) {
+    try {
+      let response = await fetch(
+        'https://django-microsoft-auth.herokuapp.com/dj-rest-auth/microsoft/',
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            access_token: token,
+          }),
+        },
+      );
+      let responseJson = await response.json();
+      setAuthState({
+        result: responseJson,
+      });
+      return responseJson;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const handlePressAsync = async () => {
-    let result = await openAuthSession(azureAdAppProps);
-    setAuthState({
-      result: result,
-    });
+    // Get session token from Azure AD
+    let token = await openAuthSession(azureAdAppProps);
+
+    await postReceivedToken(token);
   };
 
   return (
