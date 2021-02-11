@@ -30,6 +30,7 @@
     "react-native-safe-area": "^0.5.1",
     "react-native-screens": "~2.15.2",
     "react-native-swiper": "^1.6.0",
+    "react-native-swiper-flatlist": "^3.0.14",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
