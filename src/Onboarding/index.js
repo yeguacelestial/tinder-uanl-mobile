@@ -25,7 +25,7 @@ const DATA = [
   },
   {
     key: '3571747',
-    title: 'Liga con la raza universitaria, de forma segura',
+    title: 'Liga con la raza de tu álma mater',
     description:
       'Tu correo se utilizará para verificar que perteneces a la Uni',
     image: 'https://www.pngrepo.com/png/245145/512/love-like.png',
@@ -46,7 +46,7 @@ const DATA = [
 
 const Indicator = ({ scrollX }) => {
   return (
-    <View style={{ position: 'absolute', bottom: 15, flexDirection: 'row' }}>
+    <View style={styles.indicatorView}>
       {DATA.map((_, i) => {
         const inputRange = [(i - 1) * width, i * width, (i + 1) * width];
 
@@ -65,15 +65,10 @@ const Indicator = ({ scrollX }) => {
         return (
           <Animated.View
             key={`indicator-${i}`}
-            style={{
-              height: 10,
-              width: 10,
-              borderRadius: 5,
-              backgroundColor: '#fff',
-              opacity,
-              margin: 10,
-              transform: [{ scale }],
-            }}
+            style={[
+              styles.currentIndicator,
+              { opacity, transform: [{ scale }] },
+            ]}
           />
         );
       })}
@@ -117,23 +112,19 @@ const Square = ({ scrollX }) => {
 
   return (
     <Animated.View
-      style={{
-        width: height,
-        height: height,
-        backgroundColor: '#FBC02D',
-        borderRadius: 86,
-        position: 'absolute',
-        top: -height * 0.6,
-        left: -height * 0.3,
-        transform: [
-          {
-            rotate,
-          },
-          {
-            translateX,
-          },
-        ],
-      }}
+      style={[
+        styles.square,
+        {
+          transform: [
+            {
+              rotate,
+            },
+            {
+              translateX,
+            },
+          ],
+        },
+      ]}
     />
   );
 };
@@ -157,50 +148,21 @@ export default function App() {
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
           { useNativeDriver: false },
         )}
-        contentContainerStyle={{
-          paddingBottom: 100,
-        }}
+        contentContainerStyle={styles.flatlistContentContainer}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => {
           return (
-            <View
-              style={{
-                width,
-                alignItems: 'center',
-                padding: 20,
-              }}
-            >
-              <View
-                style={{
-                  flex: 0.7,
-                  justifyContent: 'center',
-                }}
-              >
+            <View style={styles.flatlistMainView}>
+              <View style={styles.flatlistImageView}>
                 <Image
                   source={{ uri: item.image }}
-                  style={{
-                    width: width / 2,
-                    height: height / 2,
-                    resizeMode: 'contain',
-                  }}
+                  style={styles.flatlistImage}
                 />
               </View>
 
-              <View style={{ flex: 0.3 }}>
-                <Text
-                  style={{
-                    color: '#fff',
-                    fontWeight: 'bold',
-                    fontSize: 28,
-                    marginTop: 20,
-                    marginBottom: 10,
-                  }}
-                >
-                  {item.title}
-                </Text>
-                <Text style={{ color: '#fff', fontWeight: '300' }}>
-                  {item.description}
-                </Text>
+              <View style={styles.carouselTextView}>
+                <Text style={styles.carouselTitle}>{item.title}</Text>
+                <Text style={styles.carouselSubtitle}>{item.description}</Text>
               </View>
             </View>
           );
@@ -217,7 +179,7 @@ export default function App() {
         >
           <Image
             source={require('../../assets/uni-logo.jpg')}
-            style={{ height: 40, width: 40 }}
+            style={styles.signupImage}
           />
           <Text style={styles.signup}>
             Inicia sesión con tu correo universitario
