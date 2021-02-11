@@ -13,6 +13,9 @@ import AwesomeButtonC137 from 'react-native-really-awesome-button/src/themes/c13
 
 import { styles } from './styles';
 
+import { openAuthSession } from 'azure-ad-graph-expo';
+import { azureAdAppProps } from '../utils/config';
+
 const { width, height } = Dimensions.get('screen');
 
 const bgs = ['#303F9F', '#FF5252', '#009688', '#512DA8'];
@@ -129,8 +132,45 @@ const Square = ({ scrollX }) => {
   );
 };
 
-export default function App() {
+export default function Onboarding() {
   const scrollX = React.useRef(new Animated.Value(0)).current;
+
+  // AzureAD Auth
+  const [authState, setAuthState] = React.useState({
+    result: null,
+  });
+
+  const handlePressAsync = async () => {
+    // Get session token from Azure AD
+    let token = await openAuthSession(azureAdAppProps);
+
+    await postReceivedToken(token);
+  };
+
+  async function postReceivedToken(token) {
+    try {
+      let response = await fetch(
+        'https://django-microsoft-auth.herokuapp.com/dj-rest-auth/microsoft/',
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            access_token: token,
+          }),
+        },
+      );
+      let responseJson = await response.json();
+      setAuthState({
+        result: responseJson,
+      });
+      return responseJson;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -160,6 +200,18 @@ export default function App() {
                 />
               </View>
 
+              {authState.result ? (
+                <Text style={{ color: 'white' }}>
+                  {JSON.stringify(authState.result)}
+
+                  {authState.result.key
+                    ? alert('INICIASTE SESION')
+                    : alert('NO INICIASTE SESION')}
+                </Text>
+              ) : (
+                <Text style={{ color: 'white' }}>Nothing to see here.</Text>
+              )}
+
               <View style={styles.carouselTextView}>
                 <Text style={styles.carouselTitle}>{item.title}</Text>
                 <Text style={styles.carouselSubtitle}>{item.description}</Text>
@@ -176,6 +228,10 @@ export default function App() {
           width={380}
           height={60}
           borderRadius={15}
+          onPress={(next) => {
+            handlePressAsync();
+            next();
+          }}
         >
           <Image
             source={require('../../assets/uni-logo.jpg')}

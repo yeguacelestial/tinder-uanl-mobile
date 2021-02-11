@@ -42,15 +42,17 @@ export default function AzureAuth() {
     await postReceivedToken(token);
   };
 
-  return (
-    <View style={styles.container}>
-      <Button title="Login" onPress={handlePressAsync} />
+  // return (
+  //   <View style={styles.container}>
+  //     <Button title="Login" onPress={handlePressAsync} />
 
-      {authState.result ? (
-        <Text>{JSON.stringify(authState.result)}</Text>
-      ) : (
-        <Text>Nothing to see here.</Text>
-      )}
-    </View>
-  );
+  //     {authState.result ? (
+  //       <Text>{JSON.stringify(authState.result)}</Text>
+  //     ) : (
+  //       <Text>Nothing to see here.</Text>
+  //     )}
+  //   </View>
+  // );
+
+  return { handlePressAsync };
 }
