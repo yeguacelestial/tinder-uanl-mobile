@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import ChatStackNavigator from './ChatStackNavigator';
 import {
   useFonts,
@@ -20,11 +19,7 @@ const ChatUi = () => {
     return <AppLoading />;
   }
 
-  return (
-    <NavigationContainer>
-      <ChatStackNavigator />
-    </NavigationContainer>
-  );
+  return <ChatStackNavigator />;
 };
 
 export default ChatUi;

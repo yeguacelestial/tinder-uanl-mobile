@@ -7,6 +7,7 @@ import {
   Dimensions,
   Animated,
   Image,
+  Alert,
 } from 'react-native';
 
 import AwesomeButtonC137 from 'react-native-really-awesome-button/src/themes/c137';
@@ -15,6 +16,8 @@ import { styles } from './styles';
 
 import { openAuthSession } from 'azure-ad-graph-expo';
 import { azureAdAppProps } from '../utils/config';
+
+import ChatUi from '../ChatUi/index.js';
 
 const { width, height } = Dimensions.get('screen');
 
@@ -132,7 +135,7 @@ const Square = ({ scrollX }) => {
   );
 };
 
-export default function Onboarding() {
+export default function Onboarding({ navigation }) {
   const scrollX = React.useRef(new Animated.Value(0)).current;
 
   // AzureAD Auth
@@ -202,14 +205,15 @@ export default function Onboarding() {
 
               {authState.result ? (
                 <Text style={{ color: 'white' }}>
-                  {JSON.stringify(authState.result)}
-
                   {authState.result.key
-                    ? alert('INICIASTE SESION')
-                    : alert('NO INICIASTE SESION')}
+                    ? navigation.navigate('ChatUi')
+                    : Alert.alert(
+                        'Error al iniciar sesion',
+                        JSON.stringify(authState.result),
+                      )}
                 </Text>
               ) : (
-                <Text style={{ color: 'white' }}>Nothing to see here.</Text>
+                <Text />
               )}
 
               <View style={styles.carouselTextView}>

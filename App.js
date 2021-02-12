@@ -1,17 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 
-import ChatUi from './src/ChatUi';
 import Onboarding from './src/Onboarding';
-import AzureAuth from './src/AzureAuth';
+import ChatUi from './src/ChatUi';
 
-export default function App() {
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
     <>
-      {/* {<AzureAuth />} */}
-      <Onboarding />
-      {/* <ChatUi /> */}
-      <StatusBar style="auto" />
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="Onboarding" component={Onboarding} />
+          <Stack.Screen name="ChatUi" component={ChatUi} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </>
   );
-}
+};
+
+export default App;
