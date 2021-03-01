@@ -19,7 +19,7 @@ const App = () => {
             headerShown: false,
           }}
         >
-          <Stack.Screen name="Onboarding" component={Onboarding} />
+          {/* <Stack.Screen name="Onboarding" component={Onboarding} /> */}
           <Stack.Screen name="ChatUi" component={ChatUi} />
         </Stack.Navigator>
       </NavigationContainer>
