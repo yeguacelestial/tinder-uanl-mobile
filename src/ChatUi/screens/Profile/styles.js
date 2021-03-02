@@ -44,4 +44,44 @@ export const gs = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  divider: {
+    borderBottomColor: '#444',
+    borderBottomWidth: 1,
+    marginVertical: 24,
+  },
+
+  title: {
+    color: colors.text,
+    fontSize: 30,
+  },
+
+  subTitle: {
+    fontWeight: '600',
+    textTransform: 'uppercase',
+    color: 'rgba(255, 255, 255, 0.6)',
+    fontSize: 15,
+    letterSpacing: 1,
+  },
+
+  smallText: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: colors.text,
+  },
+
+  absoluteFull: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+  },
+
+  button: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.pink,
+    borderRadius: 100,
+  },
 });

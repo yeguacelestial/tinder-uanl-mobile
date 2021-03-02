@@ -11,7 +11,7 @@ export default function Header(props) {
 
   return (
     <LinearGradient colors={[colors.orange, colors.pink]}>
-      <View style={{ marginHorizontal: 32, paddingVertical: 64 }}>
+      <View style={{ marginHorizontal: 32, paddingTop: 40 }}>
         <View style={gs.rowBetween}>
           <Ionicons name="md-arrow-back" color={'white'} size={32} />
           <Entypo name="dots-three-vertical" color={'white'} size={32} />
@@ -30,6 +30,11 @@ export default function Header(props) {
           </View>
         </View>
       </View>
+
+      <View style={[gs.center, { paddingBottom: 55, marginTop: 10 }]}>
+        <Text style={gs.title}>{name}</Text>
+        <Text style={[gs.subTitle, { marginTop: 8 }]}>Traveler/Blogger</Text>
+      </View>
     </LinearGradient>
   );
 }
@@ -37,7 +42,7 @@ export default function Header(props) {
 const styles = StyleSheet.create({
   imageContainer: {
     ...gs.center,
-    marginTop: 16,
+    marginTop: 20,
     shadowColor: colors.darkBg,
     shadowOffset: { height: 3, width: 1 },
     shadowOpacity: 0.5,
