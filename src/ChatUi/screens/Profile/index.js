@@ -3,6 +3,7 @@ import React from 'react';
 import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 
 import Header from './components/Header';
+import Stats from './components/Stats';
 import { styles, gs, colors } from './styles';
 
 const Profile = () => {
@@ -43,6 +44,7 @@ const Profile = () => {
   return (
     <ScrollView style={styles.container}>
       <Header user={userData.user} />
+      <Stats />
     </ScrollView>
   );
 };

@@ -21,7 +21,8 @@ export const gs = StyleSheet.create({
   sectionContainer: {
     paddingVertical: 24,
     paddingHorizontal: 32,
-    marginBottom: colors.lightBg,
+    marginBottom: 8,
+    backgroundColor: colors.lightBg,
   },
 
   sectionTitle: {
