@@ -5,6 +5,7 @@ import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 import Header from './components/Header';
 import Stats from './components/Stats';
 import About from './components/About';
+import Location from './components/Location';
 import { styles, gs, colors } from './styles';
 
 const Profile = () => {
@@ -47,6 +48,7 @@ const Profile = () => {
       <Header user={userData.user} />
       <Stats />
       <About />
+      <Location />
     </ScrollView>
   );
 };
