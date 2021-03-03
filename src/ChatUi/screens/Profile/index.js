@@ -6,6 +6,8 @@ import Header from './components/Header';
 import Stats from './components/Stats';
 import About from './components/About';
 import Location from './components/Location';
+import Photos from './components/Photos';
+
 import { styles, gs, colors } from './styles';
 
 const Profile = () => {
@@ -49,6 +51,7 @@ const Profile = () => {
       <Stats />
       <About />
       <Location />
+      <Photos />
     </ScrollView>
   );
 };

@@ -1,16 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#373737',
-  },
-});
-
 export const colors = {
   darkBg: '#222',
   lightBg: '#333',
-  darkHl: '#666',
-  lightHl: '#888',
+  darkHl: '#888',
+  lightHl: '#999',
   pink: '#ea3372',
   text: '#fff',
   textSec: '#aaa',
@@ -84,5 +78,11 @@ export const gs = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.pink,
     borderRadius: 100,
+  },
+});
+
+export const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.darkBg,
   },
 });
