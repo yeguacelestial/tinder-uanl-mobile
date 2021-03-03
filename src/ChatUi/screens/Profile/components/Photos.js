@@ -15,7 +15,7 @@ const photos = [
 export default function Photos() {
   return (
     <View style={[gs.sectionContainer, { marginTop: 8 }]}>
-      <Text style={gs.sectionTitle}>My photos</Text>
+      <Text style={gs.sectionTitle}>Mis fotos</Text>
 
       <View style={styles.photosContainer}>
         {photos.map((photo, index) => {

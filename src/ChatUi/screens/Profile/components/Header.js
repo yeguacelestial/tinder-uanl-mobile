@@ -11,12 +11,7 @@ export default function Header(props) {
 
   return (
     <LinearGradient colors={[colors.orange, colors.pink]}>
-      <View style={{ marginHorizontal: 32, paddingTop: 40 }}>
-        <View style={gs.rowBetween}>
-          <Ionicons name="md-arrow-back" color={'white'} size={32} />
-          <Entypo name="dots-three-vertical" color={'white'} size={32} />
-        </View>
-
+      <View style={{ marginHorizontal: 32, paddingTop: 50 }}>
         <View style={styles.imageContainer}>
           <View>
             <View style={styles.check}>
@@ -31,9 +26,11 @@ export default function Header(props) {
         </View>
       </View>
 
-      <View style={[gs.center, { paddingBottom: 55, marginTop: 10 }]}>
+      <View style={[gs.center, { paddingBottom: 65, marginTop: 10 }]}>
         <Text style={gs.title}>{name}</Text>
-        <Text style={[gs.subTitle, { marginTop: 8 }]}>Traveler/Blogger</Text>
+        <Text style={[gs.subTitle, { marginTop: 8 }]}>
+          Facultad de Ingenieria Mecánica y Eléctrica
+        </Text>
       </View>
     </LinearGradient>
   );

@@ -6,12 +6,11 @@ import { gs, colors } from '../styles';
 const About = () => {
   return (
     <View style={styles.container}>
-      <Text style={gs.sectionTitle}>ABOUT ME</Text>
+      <Text style={gs.sectionTitle}>Acerca de mí</Text>
       <Text style={styles.about}>
-        May I have your attention, please?. Will the real Slim Shady please
-        stand up?. I repeat, will the real Slim Shady please stand up?. We're
-        gonna have a problem here. Y'all act like you never seen a white person
-        before.
+        His palms are sweaty, knees weak, arms are heavy. There's vomit on his
+        sweater already: Mom's spaghetti. He's nervous, but on the surface he
+        looks calm and ready, To drop.
       </Text>
     </View>
   );

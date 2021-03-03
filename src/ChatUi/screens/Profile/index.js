@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
+import { View, ScrollView, ActivityIndicator } from 'react-native';
 
 import Header from './components/Header';
 import Stats from './components/Stats';
@@ -8,7 +8,7 @@ import About from './components/About';
 import Location from './components/Location';
 import Photos from './components/Photos';
 
-import { styles, gs, colors } from './styles';
+import { styles, gs } from './styles';
 
 const Profile = () => {
   const [userData, setUserData] = React.useState({
@@ -39,7 +39,7 @@ const Profile = () => {
   if (userData.isLoading) {
     return (
       <View style={[gs.center, styles.container]}>
-        <StatusBar barStyle="light-content" />
+        <StatusBar style="light" translucent />
 
         <ActivityIndicator size="large" />
       </View>

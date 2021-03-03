@@ -7,18 +7,13 @@ export default function Stats() {
   return (
     <View style={styles.container}>
       <View style={styles.statContainer}>
-        <Text style={styles.statNumber}>12k</Text>
-        <Text style={styles.stat}>Followers</Text>
+        <Text style={styles.statNumber}>300</Text>
+        <Text style={styles.stat}>Matches</Text>
       </View>
 
       <View style={[styles.statContainer, styles.divider]}>
-        <Text style={styles.statNumber}>12k</Text>
-        <Text style={styles.stat}>Followers</Text>
-      </View>
-
-      <View style={styles.statContainer}>
-        <Text style={styles.statNumber}>12k</Text>
-        <Text style={styles.stat}>Followers</Text>
+        <Text style={styles.statNumber}>22</Text>
+        <Text style={styles.stat}>likes recibidos</Text>
       </View>
     </View>
   );
@@ -55,7 +50,6 @@ const styles = StyleSheet.create({
 
   divider: {
     borderLeftWidth: 1,
-    borderRightWidth: 1,
     borderColor: colors.darkHl,
   },
 });

@@ -57,6 +57,8 @@ export const gs = StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.6)',
     fontSize: 15,
     letterSpacing: 1,
+    textAlign: 'center',
+    marginHorizontal: 70,
   },
 
   smallText: {
