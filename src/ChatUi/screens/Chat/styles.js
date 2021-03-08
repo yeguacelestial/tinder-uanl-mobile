@@ -1,4 +1,17 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('screen');
+
+export const colors = {
+  darkBg: '#222',
+  lightBg: '#333',
+  darkHl: '#888',
+  lightHl: '#999',
+  pink: '#ea3372',
+  text: '#fff',
+  textSec: '#aaa',
+  orange: '#F97878',
+};
 
 export const styles = StyleSheet.create({
   list: {
@@ -24,9 +37,6 @@ export const styles = StyleSheet.create({
   },
   header: {
     fontFamily: 'Montserrat_800ExtraBold',
-  },
-  header: {
-    fontFamily: 'Montserrat_800ExtraBold',
     color: '#FFF',
     flex: 1,
     fontSize: 24,
@@ -38,8 +48,8 @@ export const styles = StyleSheet.create({
   ops: {
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
-    height: 410,
-    backgroundColor: '#FFF',
+    height: height * 0.6,
+    backgroundColor: colors.darkBg,
     marginHorizontal: -20,
   },
   col: {
@@ -50,7 +60,7 @@ export const styles = StyleSheet.create({
   },
   day: {
     fontFamily: 'Montserrat_800ExtraBold',
-    color: '#000119',
+    color: '#fff',
     flex: 1,
     fontSize: 20,
   },

@@ -3,8 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
-import MaskedView from '@react-native-community/masked-view';
 
 import { gs, colors } from '../styles';
 

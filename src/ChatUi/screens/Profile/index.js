@@ -39,8 +39,6 @@ const Profile = () => {
   if (userData.isLoading) {
     return (
       <View style={[gs.center, styles.container]}>
-        <StatusBar style="light" translucent />
-
         <ActivityIndicator size="large" />
       </View>
     );

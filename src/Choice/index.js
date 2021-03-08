@@ -10,7 +10,12 @@ export default function Choice({ type }) {
 
   return (
     <View style={[styles.container, { borderColor: color }]}>
-      <Text style={[styles.text, { color }]}>{type}</Text>
+      {/* <Text style={[styles.text, { color }]}>{type}</Text> */}
+      {type === 'like' ? (
+        <Text style={[styles.text, { color }]}>guap@</Text>
+      ) : (
+        <Text style={[styles.text, { color }]}>nel</Text>
+      )}
     </View>
   );
 }

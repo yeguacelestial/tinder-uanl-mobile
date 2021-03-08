@@ -13,7 +13,7 @@ const App = () => {
   return (
     <>
       <NavigationContainer>
-        <StatusBar style="auto" translucent />
+        <StatusBar style="light" translucent />
         <Stack.Navigator
           screenOptions={{
             headerShown: false,

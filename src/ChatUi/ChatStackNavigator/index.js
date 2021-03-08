@@ -1,33 +1,37 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Main from '../../Main';
 import Discussion from '../screens/Discussion';
 import Profile from '../screens/Profile';
 import Chat from '../screens/Chat';
-import Icon from '@expo/vector-icons/Ionicons';
-import Icon2 from '@expo/vector-icons/Entypo';
 
-import { styles } from './styles';
+import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { Fontisto } from '@expo/vector-icons';
 
-const Tab = createBottomTabNavigator();
+import { styles, colors } from './styles';
+
+const Tab = createMaterialBottomTabNavigator();
+
 const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: '#f2404c',
+        activeTintColor: colors.orange,
         inactiveTintColor: '#000119',
-        style: styles.tabBar,
       }}
+      barStyle={{ backgroundColor: colors.darkBg }}
+      shifting={true}
     >
       <Tab.Screen
         name="Home"
         component={Main}
         options={{
-          tabBarLabel: '',
+          tabBarLabel: 'Inicio',
           tabBarIcon: ({ color, size }) => (
-            <Icon name="ios-compass" color={color} size={30} />
+            <Ionicons name="compass" size={24} color={color} />
           ),
         }}
       />
@@ -36,9 +40,9 @@ const BottomTabNavigator = () => {
         name="Chat"
         component={Chat}
         options={{
-          tabBarLabel: '',
+          tabBarLabel: 'Matches',
           tabBarIcon: ({ color, size }) => (
-            <Icon2 name="chat" color={color} size={30} />
+            <Fontisto name="heart" size={20} color={color} />
           ),
         }}
       />
@@ -47,9 +51,9 @@ const BottomTabNavigator = () => {
         name="Profile"
         component={Profile}
         options={{
-          tabBarLabel: '',
+          tabBarLabel: 'Mi perfil',
           tabBarIcon: ({ color, size }) => (
-            <Icon name="ios-person" color={color} size={30} />
+            <AntDesign name="profile" size={24} color={color} />
           ),
         }}
       />

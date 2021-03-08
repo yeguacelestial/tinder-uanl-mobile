@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ActivityIndicator, Animated, Image } from 'react-native';
+import { View, Text, ActivityIndicator, Animated } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import { LinearGradient } from 'expo-linear-gradient';
@@ -47,13 +47,9 @@ const Chat = (props) => {
   console.log(data.login);
 
   return (
-    <LinearGradient
-      colors={['#f26a50', '#f20042', '#f20045']}
-      style={styles.gradient}
-    >
+    <LinearGradient colors={['#ea3372', '#ea3372']} style={styles.gradient}>
       <View style={styles.headerContainer}>
-        <Text style={styles.header}>Chat</Text>
-        <Icon name="add" color="#fff" size={30} />
+        <Text style={styles.header}>Matches</Text>
       </View>
       <ScrollView
         horizontal
@@ -77,7 +73,7 @@ const Chat = (props) => {
 
       <View style={styles.ops}>
         <View style={styles.col}>
-          <Text style={styles.day}>Sunday</Text>
+          <Text style={styles.day}>Mensajes</Text>
           <Entypo name="dots-three-horizontal" color="#000119" size={30} />
         </View>
 

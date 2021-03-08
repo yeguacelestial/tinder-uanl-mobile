@@ -1,5 +1,16 @@
 import { StyleSheet } from 'react-native';
 
+export const colors = {
+  darkBg: '#222',
+  lightBg: '#333',
+  darkHl: '#888',
+  lightHl: '#999',
+  pink: '#ea3372',
+  text: '#fff',
+  textSec: '#aaa',
+  orange: '#F97878',
+};
+
 export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -25,20 +36,20 @@ export const styles = StyleSheet.create({
     borderRadius: 30,
   },
   text: {
-    color: '#b6b6b6',
+    color: colors.lightHl,
     fontFamily: 'Montserrat_600SemiBold',
-    fontSize: 11,
+    fontSize: 15,
   },
   duration: {
-    color: '#000119',
-    fontSize: 12,
+    color: colors.lightHl,
+    fontSize: 15,
     flex: 1,
     marginLeft: 280,
     position: 'absolute',
     fontFamily: 'Montserrat_600SemiBold',
   },
   username: {
-    color: '#000119',
+    color: 'white',
     fontFamily: 'Montserrat_700Bold',
   },
 });

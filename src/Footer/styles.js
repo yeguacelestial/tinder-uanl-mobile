@@ -1,11 +1,11 @@
-import React from 'react';
+import { StyleSheet, Dimensions } from 'react-native';
 
-import { StyleSheet } from 'react-native';
+const { width, height } = Dimensions.get('screen');
 
 export const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    bottom: 15,
+    bottom: height - height * 0.95,
     width: 170,
     flexDirection: 'row',
     alignItems: 'center',
