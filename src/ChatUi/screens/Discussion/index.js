@@ -10,84 +10,107 @@ import Sent from '../../../utils/components/Sent';
 import Data from '../../../utils/dummy/Data.json';
 import Input from '../../../utils/components/Input';
 
+import { MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+
+import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
+
 import { styles } from './styles';
 
-const Discussion = ({ route, navigation }) => {
-  const { itemName, itemPic } = route.params;
-  const [inputMessage, setMessage] = React.useState('');
+const Discussion = (props) => {
+  const [messages, setMessages] = React.useState([]);
 
-  // For scrolling to the bottom of the chat
-  const scrollViewRef = React.useRef();
+  React.useEffect(() => {
+    setMessages([
+      {
+        _id: 1,
+        text: 'Hello developer',
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'React Native',
+          avatar: 'https://placeimg.com/140/140/any',
+        },
+      },
 
-  const send = () => {
-    Data.push({ id: inputMessage, message: inputMessage });
-    setMessage('');
+      {
+        _id: 2,
+        text: 'Hello world',
+        createdAt: new Date(),
+        user: {
+          _id: 1,
+          name: 'React Native',
+          avatar: 'https://placeimg.com/140/140/any',
+        },
+      },
+    ]);
+  }, []);
+
+  const onSend = React.useCallback((messages = []) => {
+    setMessages((previousMessages) =>
+      GiftedChat.append(previousMessages, messages),
+    );
+  }, []);
+
+  const renderBubble = (props) => {
+    return (
+      <Bubble
+        {...props}
+        wrapperStyle={{
+          right: {
+            backgroundColor: '#2e64e5',
+          },
+          left: {
+            backgroundColor: 'black',
+          },
+        }}
+        textStyle={{
+          right: {
+            color: '#fff',
+          },
+          left: {
+            color: '#fff',
+          },
+        }}
+      />
+    );
   };
 
-  let txt = [];
-  for (let i = 5; i < Data.length; i++) {
-    txt.push(<Sent key={Data[i].id} message={Data[i].message} />);
-  }
-  console.log(Data);
+  const renderSend = (props) => {
+    return (
+      <Send {...props}>
+        <View>
+          <MaterialIcons
+            name="send"
+            size={23}
+            color="#2e64e5"
+            style={{ marginBottom: 10, marginRight: 10 }}
+          />
+        </View>
+      </Send>
+    );
+  };
+
+  const scrollToBottomComponent = () => {
+    return <FontAwesome name="angle-double-down" size={24} color="#333" />;
+  };
 
   return (
-    <LinearGradient
-      colors={['#f26a50', '#f26a50', '#f20045']}
-      style={styles.container}
-    >
-      <View style={styles.main}>
-        <View style={styles.headerContainer}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Icon name="left" color="#000119" size={24} />
-          </TouchableOpacity>
-          <Text style={styles.username}>{itemName}</Text>
-          <Image source={{ uri: itemPic }} style={styles.avatar} />
-        </View>
-
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          ref={scrollViewRef}
-          onContentSizeChange={() =>
-            scrollViewRef.current.scrollToEnd({ animated: true })
-          }
-        >
-          {/* When Keyboard shows, go to the end of the chat */}
-          {React.useEffect(() => {
-            const keyboardDidShowListener = Keyboard.addListener(
-              'keyboardDidShow',
-              () => {
-                scrollViewRef.current.scrollToEnd({ animated: true });
-              },
-            );
-
-            return () => {
-              keyboardDidShowListener.remove();
-            };
-          }, [])}
-
-          <LastWatch checkedOn="Yesterday" />
-          <Received image={itemPic} message={Data[0].message} />
-
-          <Sent message={Data[1].message} />
-
-          <Received image={itemPic} message={Data[2].message} />
-
-          <Sent message={Data[3].message} />
-
-          <LastWatch checkedOn="Today" />
-
-          <Received image={itemPic} message={Data[4].message} />
-
-          <View>{txt}</View>
-        </ScrollView>
-      </View>
-
-      <Input
-        inputMessage={inputMessage}
-        setMessage={(inputMessage) => setMessage(inputMessage)}
-        onSendPress={send}
-      />
-    </LinearGradient>
+    // <LinearGradient
+    //   colors={['#f26a50', '#f26a50', '#f20045']}
+    //   style={styles.container}
+    // />
+    <GiftedChat
+      messages={messages}
+      onSend={(messages) => onSend(messages)}
+      user={{
+        _id: 1,
+      }}
+      renderBubble={renderBubble}
+      renderSend={renderSend}
+      scrollToBottom
+      scrollToBottomComponent={scrollToBottomComponent}
+    />
   );
 };
 

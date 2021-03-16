@@ -1,15 +1,75 @@
 import React from 'react';
-import { View, Text, ActivityIndicator, Animated } from 'react-native';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  Animated,
+  FlatList,
+} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import { LinearGradient } from 'expo-linear-gradient';
-import Entypo from '@expo/vector-icons/Entypo';
-import Icon from '@expo/vector-icons/MaterialIcons';
 
 import { styles } from './styles';
 
 import Profiles from '../../../utils/components/Profiles';
-import Message from '../../../utils/components/Message';
+
+// Styled components
+import {
+  Container,
+  Card,
+  UserInfo,
+  UserImgWrapper,
+  UserImg,
+  UserInfoText,
+  UserName,
+  PostTime,
+  MessageText,
+  TextSection,
+} from '../styledComponents';
+
+const Messages = [
+  {
+    id: '1',
+    userName: 'Jenny Doe',
+    userImg: require('../../../../assets/users/user-3.jpg'),
+    messageTime: '4 mins ago',
+    messageText:
+      'Hey there, this is my test for a post of my social app in React Native.',
+  },
+  {
+    id: '2',
+    userName: 'John Doe',
+    userImg: require('../../../../assets/users/user-1.jpg'),
+    messageTime: '2 hours ago',
+    messageText:
+      'Hey there, this is my test for a post of my social app in React Native.',
+  },
+  {
+    id: '3',
+    userName: 'Ken William',
+    userImg: require('../../../../assets/users/user-4.jpg'),
+    messageTime: '1 hours ago',
+    messageText:
+      'Hey there, this is my test for a post of my social app in React Native.',
+  },
+  {
+    id: '4',
+    userName: 'Selina Paul',
+    userImg: require('../../../../assets/users/user-6.jpg'),
+    messageTime: '1 day ago',
+    messageText:
+      'Hey there, this is my test for a post of my social app in React Native.',
+  },
+  {
+    id: '5',
+    userName: 'Christy Alex',
+    userImg: require('../../../../assets/users/user-7.jpg'),
+    messageTime: '2 days ago',
+    messageText:
+      'Hey there, this is my test for a post of my social app in React Native.',
+  },
+];
 
 const Chat = (props) => {
   const URL = 'https://api.github.com/users';
@@ -44,12 +104,10 @@ const Chat = (props) => {
     [list, pan],
   );
 
-  console.log(data.login);
-
   return (
     <LinearGradient colors={['#ea3372', '#ea3372']} style={styles.gradient}>
       <View style={styles.headerContainer}>
-        <Text style={styles.header}>Matches</Text>
+        <Text style={styles.header}>El Ganado™ </Text>
       </View>
       <ScrollView
         horizontal
@@ -74,32 +132,38 @@ const Chat = (props) => {
       <View style={styles.ops}>
         <View style={styles.col}>
           <Text style={styles.day}>Mensajes</Text>
-          <Entypo name="dots-three-horizontal" color="#000119" size={30} />
         </View>
 
-        <ScrollView>
-          {loading ? (
-            <ActivityIndicator size="large" color="#f20042" />
-          ) : (
-            <Animated.View style={[list.getLayout(), styles.list]}>
-              {data.map((item, index) => (
-                <Message
-                  key={item.id}
-                  username={item.login}
-                  uri={item.avatar_url}
-                  count={Math.floor(Math.random() * 3)}
-                  onPress={() => {
-                    props.navigation.navigate('Discussion', {
-                      itemId: item.id,
-                      itemName: item.login,
-                      itemPic: item.avatar_url,
-                    });
-                  }}
-                />
-              ))}
-            </Animated.View>
-          )}
-        </ScrollView>
+        <Container>
+          <FlatList
+            data={Messages}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <Card
+                onPress={() =>
+                  props.navigation.navigate('Discussion', {
+                    userName: item.userName,
+                  })
+                }
+              >
+                <UserInfo>
+                  <UserImgWrapper>
+                    <UserImg source={item.userImg} />
+                  </UserImgWrapper>
+
+                  <TextSection>
+                    <UserInfoText>
+                      <UserName>{item.userName}</UserName>
+                      <PostTime>{item.messageTime}</PostTime>
+                    </UserInfoText>
+
+                    <MessageText>{item.messageText}</MessageText>
+                  </TextSection>
+                </UserInfo>
+              </Card>
+            )}
+          />
+        </Container>
       </View>
     </LinearGradient>
   );

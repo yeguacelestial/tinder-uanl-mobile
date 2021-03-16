@@ -40,7 +40,7 @@ const BottomTabNavigator = () => {
         name="Chat"
         component={Chat}
         options={{
-          tabBarLabel: 'Matches',
+          tabBarLabel: 'Mi ganado',
           tabBarIcon: ({ color, size }) => (
             <Fontisto name="heart" size={20} color={color} />
           ),
@@ -70,7 +70,18 @@ const ChatStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
       <Stack.Screen name="Chat" component={BottomTabNavigator} />
-      <Stack.Screen name="Discussion" component={Discussion} />
+      <Stack.Screen
+        name="Discussion"
+        component={Discussion}
+        options={({ route }) => ({
+          headerShown: true,
+          headerStyle: { backgroundColor: 'black' },
+          headerTitleStyle: { color: 'white' },
+          headerTintColor: 'white',
+          headerTitleAlign: 'center',
+          title: route.params.userName,
+        })}
+      />
     </Stack.Navigator>
   );
 };
