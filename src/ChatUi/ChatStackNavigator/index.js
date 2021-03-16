@@ -75,7 +75,7 @@ const ChatStackNavigator = () => {
         component={Discussion}
         options={({ route }) => ({
           headerShown: true,
-          headerStyle: { backgroundColor: 'black' },
+          headerStyle: { backgroundColor: '#ea3372' },
           headerTitleStyle: { color: 'white' },
           headerTintColor: 'white',
           headerTitleAlign: 'center',

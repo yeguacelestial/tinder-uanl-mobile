@@ -1,21 +1,17 @@
 import React from 'react';
-import { View, Text, Image, Keyboard } from 'react-native';
+import { View, Text } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import Icon from '@expo/vector-icons/AntDesign';
-import LastWatch from '../../../utils/components/LastWatch';
-import Received from '../../../utils/components/Received';
-import Sent from '../../../utils/components/Sent';
-import Data from '../../../utils/dummy/Data.json';
-import Input from '../../../utils/components/Input';
-
 import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 
-import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
-
-import { styles } from './styles';
+import {
+  Bubble,
+  GiftedChat,
+  Send,
+  InputToolbar,
+  Composer,
+} from 'react-native-gifted-chat';
 
 const Discussion = (props) => {
   const [messages, setMessages] = React.useState([]);
@@ -58,10 +54,10 @@ const Discussion = (props) => {
         {...props}
         wrapperStyle={{
           right: {
-            backgroundColor: '#2e64e5',
+            backgroundColor: '#ea3372',
           },
           left: {
-            backgroundColor: 'black',
+            backgroundColor: '#2e64e5',
           },
         }}
         textStyle={{
@@ -82,7 +78,7 @@ const Discussion = (props) => {
         <View>
           <MaterialIcons
             name="send"
-            size={23}
+            size={20}
             color="#2e64e5"
             style={{ marginBottom: 10, marginRight: 10 }}
           />
@@ -91,8 +87,30 @@ const Discussion = (props) => {
     );
   };
 
+  const customInputToolbar = (props) => {
+    return (
+      <InputToolbar
+        {...props}
+        containerStyle={{
+          backgroundColor: '#000',
+          borderTopColor: '#2e64e5',
+          borderTopWidth: 1,
+        }}
+      />
+    );
+  };
+
+  const customComposer = (props) => {
+    return (
+      <Composer
+        {...props}
+        placeholder={'Escribe tu mensaje aquí...'}
+        textInputStyle={{ color: 'white' }}
+      />
+    );
+  };
   const scrollToBottomComponent = () => {
-    return <FontAwesome name="angle-double-down" size={24} color="#333" />;
+    return <FontAwesome name="angle-double-down" size={24} color="#2e64e5" />;
   };
 
   return (
@@ -108,8 +126,11 @@ const Discussion = (props) => {
       }}
       renderBubble={renderBubble}
       renderSend={renderSend}
+      renderInputToolbar={customInputToolbar}
+      renderComposer={customComposer}
       scrollToBottom
       scrollToBottomComponent={scrollToBottomComponent}
+      messagesContainerStyle={{ backgroundColor: 'black' }}
     />
   );
 };
